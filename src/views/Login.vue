@@ -11,15 +11,18 @@
                 <v-spacer />
               </v-toolbar>
               <v-card-text>
-                <v-form>
-                  <v-text-field label="Login" name="login" type="text" />
-                  <v-text-field id="password" label="Password" name="password" type="password" />
+                <v-form ref="form" lazy-validation>
+                  <v-text-field label="Username" name="login" type="text" v-model="username" />
+                  <v-text-field
+                    id="password"
+                    label="Password"
+                    name="password"
+                    type="password"
+                    v-model="password"
+                  />
                 </v-form>
+                <v-btn color="primary" @click="login()">Login</v-btn>
               </v-card-text>
-              <v-card-actions>
-                <v-spacer />
-                <v-btn color="primary">Login</v-btn>
-              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
@@ -29,7 +32,27 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  props: {}
+  data() {
+    return {
+      master: [],
+      username: "",
+      password: ""
+    };
+  },
+  methods: {
+    login: function() {
+      var username = "",
+        password = "";
+      axios
+        .get("http://localhost:3000/user")
+        .then(response => (this.master = response.data[0]))
+        .catch(error => console.log(error));
+      // console.log(this.master);
+      username = this.master.username;
+      password = this.master.password;
+    }
+  }
 };
 </script>

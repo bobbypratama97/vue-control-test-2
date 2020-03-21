@@ -1,0 +1,31 @@
+{
+	"products": [{
+
+			"id": 1,
+			"name": "Kopi Susu",
+			"price": 10000,
+			"description": "mantap",
+			"category": "Coffee"
+		},
+		{
+			"id": 2,
+			"name": "Teh Manis",
+			"price": 5000,
+			"description": "Manis",
+			"category": "Teh"
+		},
+		{
+			"id": 3,
+			"name": "Indomie Goreng",
+			"price": 12000,
+			"description": "Luar biasa",
+			"category": "Makanan"
+		}
+	],
+	"user": [{
+		"id": 1,
+		"username": "bobbypratama97",
+		"password": "123456"
+	}]
+
+}
