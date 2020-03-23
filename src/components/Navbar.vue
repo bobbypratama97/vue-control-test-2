@@ -56,13 +56,18 @@ export default {
           route: "/"
         },
         {
-          icon: "folder",
+          icon: "emoji_food_beverage",
           text: "Teh",
           route: "/projects"
         },
         {
-          icon: "person",
+          icon: "emoji_food_beverage",
           text: "Kopi",
+          route: "/team"
+        },
+        {
+          icon: "fastfood",
+          text: "Makanan",
           route: "/team"
         }
       ]

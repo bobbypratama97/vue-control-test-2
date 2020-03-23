@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Dashboard from './views/Dashboard.vue'
 import Projects from './views/Projects.vue'
 import Team from './views/Team.vue'
+import Login from './views/Login.vue'
 
 Vue.use(Router)
 
@@ -11,6 +12,11 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [{
       path: '/',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/dashboard',
       name: 'dashboard',
       component: Dashboard
     },
