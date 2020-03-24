@@ -18,7 +18,9 @@
                 v-model="password"
               />
             </v-form>
-            <v-btn color="primary" router :to="link">Login</v-btn>
+            <router-link to="/dashboard">
+              <v-btn color="primary">Login</v-btn>
+            </router-link>
           </v-card-text>
         </v-card>
       </v-layout>

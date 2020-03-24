@@ -1,101 +1,79 @@
 <template>
-  <div class="dashboard">
-    <h1 class="subheading grey--text">Dashboard</h1>
+  <div class="team">
     <v-container class="my-5">
-      <v-layout row class="mb-3">
-        <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortBy('title')" slot="activator">
-            <v-icon left small>fastfood</v-icon>
-            <span class="caption text-lowercase">Teh</span>
-          </v-btn>
-          <span>Sort Card by Category</span>
-        </v-tooltip>
-        <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortBy('title')" slot="activator">
-            <v-icon left small>fastfood</v-icon>
-            <span class="caption text-lowercase">Kopi</span>
-          </v-btn>
-          <span>Sort Card by Project Category</span>
-        </v-tooltip>
-        <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortBy('title')" slot="activator">
-            <v-icon left small>fastfood</v-icon>
-            <span class="caption text-lowercase">Makanan</span>
-          </v-btn>
-          <span>Sort Card by Category</span>
-        </v-tooltip>
+      <v-layout row wrap>
+        <v-flex xs12 sm6 md4 lg3 v-for="person in team" :key="person.name">
+          <v-card flat class="text-xs-center ma-3">
+            <v-responsive class="pt-4">
+              <v-avatar size="100" class="grey lighten-2">
+                <img :src="person.avatar" />
+              </v-avatar>
+            </v-responsive>
+            <v-card-text>
+              <div class="subheading">{{person.name}}</div>
+              <div class="grey--text">{{person.role}}</div>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn flat color="grey">
+                <v-icon small left>message</v-icon>
+                <v-btn @click="showTeam">A</v-btn>
+                <span>Message</span>
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
       </v-layout>
-      <v-card flat v-for="project in projects" :key="project.title">
-        <h1>Test</h1>
-      </v-card>
     </v-container>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      projects: [
+      team2: [],
+      team: [
         {
-          title: "Design SITF on Adobe XD",
-          person: "Bobby",
-          due: "8 February 2019",
-          status: "Ongoing",
-          content: "Test"
+          name: "Bobby Pratama",
+          role: "Chief Marketing Officer",
+          avatar: "/ronaldo.jpg"
         },
         {
-          title: "Code Up The Homepage",
-          person: "Verry",
-          due: "15 February 2019",
-          status: "Complete",
-          content: "Test"
+          name: "Ian Yulistio Susilo",
+          role: "Chief Technology Officer",
+          avatar: "/ronaldo.jpg"
         },
         {
-          title: "Design Video Thumbnails",
-          person: "Ian",
-          due: "10 February 2019",
-          status: "Overdue",
-          content: "Test"
+          name: "Verryanto Paulus",
+          role: "Head of Software",
+          avatar: "/ronaldo.jpg"
         },
         {
-          title: "Create A Community Forum",
-          person: "Komang",
-          due: "28 February 2019",
-          status: "Overdue",
-          content: "Test"
+          name: "Komang Arinanda",
+          role: "Chief Executive Organizer",
+          avatar: "/ronaldo.jpg"
+        },
+        {
+          name: "Adrian Hartanto",
+          role: "Head of Architecture Team",
+          avatar: "/ronaldo.jpg"
         }
       ]
     };
   },
   methods: {
-    sortBy(prop) {
-      this.projects.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
+    created() {
+      axios
+        .get("http://localhost:3000/user")
+        .then(response => (this.team2 = response))
+        .catch(error => console.log(error));
+      console.log(this.team2);
+    },
+    showTeam() {
+      console.log("test");
+      // console.log(this.team2);
     }
   }
 };
 </script>
-
-<style>
-.project.Complete {
-  border-left: 4px solid #3cd1c2;
-}
-.project.Ongoing {
-  border-left: 4px solid orange;
-}
-.project.Overdue {
-  border-left: 4px solid tomato;
-}
-
-.v-chip.Complete {
-  background: #3cd1c2;
-}
-
-.v-chip.Ongoing {
-  background: #ffaa2c;
-}
-
-.v-chip.Overdue {
-  background: #f83e70;
-}
-</style>
