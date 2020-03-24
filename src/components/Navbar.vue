@@ -20,7 +20,7 @@
           <v-avatar size="100">
             <img src="/ronaldo.jpg" />
           </v-avatar>
-          <p class="white--text subheading mt-1">Bobby Pratama</p>
+          <p class="white--text subheading mt-1">{{user[0].name}}</p>
         </v-flex>
         <v-flex class="mt-4 mb-3">
           <Popup />
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import Popup from "./Popup.vue";
 export default {
   components: {
@@ -48,6 +49,7 @@ export default {
   },
   data() {
     return {
+      user: [],
       drawer: false,
       links: [
         {
@@ -72,6 +74,11 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    axios
+      .get("http://localhost:3000/user")
+      .then(response => (this.user = response.data));
   }
 };
 </script>
