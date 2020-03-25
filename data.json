@@ -13,7 +13,7 @@
             "name": "Teh Manis",
             "price": 5000,
             "description": "Manis",
-            "category": "Teh",
+            "category": "Tea",
             "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Glass_of_Iced_Tea.jpg/1200px-Glass_of_Iced_Tea.jpg"
         },
         {
@@ -21,7 +21,7 @@
             "name": "Indomie Goreng",
             "price": 12000,
             "description": "Luar biasa",
-            "category": "Makanan",
+            "category": "Food",
             "image": "https://img-global.cpcdn.com/recipes/7e38e0d2e557c00f/751x532cq70/indomie-goreng-telor-foto-resep-utama.jpg"
         }
     ],
