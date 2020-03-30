@@ -2,28 +2,13 @@
   <div class="team">
     <v-container class="my-5">
       <v-layout row class="mb-3">
-        <v-dialog max-width="600px">
+        <v-tooltip top>
           <v-btn small flat color="grey" @click="sortBy('title')" slot="activator">
             <v-icon left small>folder</v-icon>
-            <span class="caption text-lowercase" @click="drawer = true">Show Cart</span>
+            <span class="caption text-lowercase">Show Cart</span>
           </v-btn>
-          <div class="text-xs-center">
-            <v-card>
-              <h1>Cart</h1>
-              <v-card-text>
-                <ul id="example-1">
-                  <li v-for="c in cart" :key="c.id">
-                    {{ c.name }} - {{c.price}}
-                    <!-- {{this.price = this.price+c.price}} -->
-                  </li>
-                </ul>
-              </v-card-text>
-              <v-card-actions class="justify-center">
-                <v-btn @click="countPrice(cart)">Checkout</v-btn>
-              </v-card-actions>
-            </v-card>
-          </div>
-        </v-dialog>
+          <span>Show Cart</span>
+        </v-tooltip>
         <v-tooltip top>
           <v-btn v-for="entry in filterList" :key="entry">
             <v-icon left small>dashboard</v-icon>
@@ -112,8 +97,7 @@ export default {
     addItem(p) {
       this.cart.push(p);
       console.log(this.cart);
-    },
-    countPrice(cart) {}
+    }
   }
 };
 </script>
