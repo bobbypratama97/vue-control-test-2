@@ -9,13 +9,22 @@
           </v-btn>
           <span>Show Cart</span>
         </v-tooltip>
-        <v-tooltip top>
-          <v-btn v-for="entry in filterList" :key="entry">
-            <v-icon left small>dashboard</v-icon>
-            <span class="caption text-lowercase">{{entry}}</span>
-          </v-btn>
-          <span>Show all products</span>
-        </v-tooltip>
+        <v-btn
+          small
+          flat
+          color="grey"
+          v-for="(entry, index) in filterList"
+          :item="entry"
+          :key="index"
+          @click="
+          filter = entry;
+          active = index;
+        "
+          :class="{ active: entry == filter }"
+        >
+          <v-icon left small>fastfood</v-icon>
+          {{ entry }}
+        </v-btn>
       </v-layout>
       <v-layout row wrap>
         <v-flex
@@ -57,7 +66,7 @@
 <script>
 import axios from "axios";
 export default {
-  data() {
+  data: function() {
     return {
       fkey: "mainProduct",
       filterList: ["Food", "Tea", "Coffee"],
