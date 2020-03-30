@@ -23,6 +23,14 @@
             "description": "Luar biasa",
             "category": "Food",
             "image": "https://img-global.cpcdn.com/recipes/7e38e0d2e557c00f/751x532cq70/indomie-goreng-telor-foto-resep-utama.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Ayam Geprek",
+            "price": 15000,
+            "description": "Pedas Luar biasa",
+            "category": "Food",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/2/24/Ayam_geprek.png"
         }
     ],
     "user": [{
