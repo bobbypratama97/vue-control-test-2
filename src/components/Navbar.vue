@@ -8,10 +8,12 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-btn flat color="grey">
-        <span>Sign Out</span>
-        <v-icon right>exit_to_app</v-icon>
-      </v-btn>
+      <router-link to="/">
+        <v-btn flat color="grey">
+          <span>Sign Out</span>
+          <v-icon right>exit_to_app</v-icon>
+        </v-btn>
+      </router-link>
     </v-toolbar>
 
     <v-navigation-drawer app v-model="drawer" class="primary">

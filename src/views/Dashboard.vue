@@ -65,31 +65,7 @@ export default {
       productFilterKey: "all"
     };
   },
-  computed: {
-    // resultsFilter(entry) {
-    //   if (this.filter !== "All") {
-    //     if (entry[this.fkey] === this.filter) {
-    //       return entry;
-    //     }
-    //   } else {
-    //     return entry;
-    //   }
-    // }
-    // productFilter() {
-    //   return this[this.productFilterKey];
-    // },
-    // all() {
-    //   return this.products;
-    // },
-    // food() {
-    //   return this.products.filter(product => product.category == "Food");
-    // }
-    // filteredFood() {
-    //   return this.products.filter(product => {
-    //     return product.category.match("Food");
-    //   });
-    // }
-  },
+  computed: {},
   created() {
     axios
       .get("http://localhost:3000/user")
