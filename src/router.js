@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Dashboard from './views/Dashboard.vue'
 import Projects from './views/Projects.vue'
 import Login from './views/Login.vue'
-import DataDisplay from './views/DataDisplay.vue'
 
 Vue.use(Router)
 
@@ -25,10 +24,5 @@ export default new Router({
       name: 'projects',
       component: Projects
     },
-    {
-      path: '/display',
-      name: 'DataDisplay',
-      component: DataDisplay
-    }
   ]
 })
