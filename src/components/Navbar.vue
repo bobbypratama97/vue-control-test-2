@@ -32,11 +32,8 @@
 
 <script>
 import axios from "axios";
-import Popup from "./Popup.vue";
 export default {
-  components: {
-    Popup
-  },
+  components: {},
   data() {
     return {
       user: [],

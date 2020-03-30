@@ -10,47 +10,35 @@
           <span>Show Cart</span>
         </v-tooltip>
         <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortBy('person')" slot="activator">
+          <v-btn v-for="entry in filterList" :key="entry">
             <v-icon left small>dashboard</v-icon>
-            <span class="caption text-lowercase">All</span>
+            <span class="caption text-lowercase">{{entry}}</span>
           </v-btn>
           <span>Show all products</span>
         </v-tooltip>
-        <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortBy('person')" slot="activator">
-            <v-icon left small>fastfood</v-icon>
-            <span class="caption text-lowercase">Food</span>
-          </v-btn>
-          <span>Show only Food</span>
-        </v-tooltip>
-        <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortBy('person')" slot="activator">
-            <v-icon left small>emoji_food_beverage</v-icon>
-            <span class="caption text-lowercase">Tea</span>
-          </v-btn>
-          <span>Show only Tea</span>
-        </v-tooltip>
-        <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortBy('person')" slot="activator">
-            <v-icon left small>emoji_food_beverage</v-icon>
-            <span class="caption text-lowercase">Coffee</span>
-          </v-btn>
-          <span>Show only Coffee</span>
-        </v-tooltip>
       </v-layout>
       <v-layout row wrap>
-        <v-flex xs12 sm6 md4 lg3 v-for="p in products" :key="p.id">
+        <v-flex
+          xs12
+          sm6
+          md4
+          lg3
+          v-for="(product,id) in products"
+          :item="product"
+          :key="id"
+          class="product"
+        >
           <v-card flat class="text-xs-center ma-3 justify-center">
             <v-responsive class="pt-4">
               <v-avatar size="100" class="grey lighten-2">
-                <img :src="p.image" />
+                <img :src="product.image" />
               </v-avatar>
             </v-responsive>
             <v-card-text>
-              <div class="subheading font-weight-bold">{{p.name}}</div>
-              <div class="subheading font-weight-bold">{{p.price}}</div>
-              <div class="subheading font-weight-light">{{p.description}}</div>
-              <div class="grey--text">{{p.category}}</div>
+              <div class="subheading font-weight-bold">{{product.name}}</div>
+              <div class="subheading font-weight-bold">{{product.price}}</div>
+              <div class="subheading font-weight-light">{{product.description}}</div>
+              <div class="grey--text">{{product.category}}</div>
             </v-card-text>
             <v-card-actions>
               <v-flex class="text-center">
@@ -71,12 +59,32 @@ import axios from "axios";
 export default {
   data() {
     return {
+      fkey: "mainProduct",
+      filterList: ["Food", "Tea", "Coffee"],
+      filter: "All",
+      products: [],
       cart: [],
       user: [],
-      products: []
+      productFilterKey: "all"
     };
   },
-  mounted() {
+  computed: {
+    // productFilter() {
+    //   return this[this.productFilterKey];
+    // },
+    // all() {
+    //   return this.products;
+    // },
+    // food() {
+    //   return this.products.filter(product => product.category == "Food");
+    // }
+    // filteredFood() {
+    //   return this.products.filter(product => {
+    //     return product.category.match("Food");
+    //   });
+    // }
+  },
+  created() {
     axios
       .get("http://localhost:3000/user")
       .then(response => (this.user = response.data));
@@ -91,10 +99,5 @@ export default {
       console.log(this.cart);
     }
   }
-  // showTeam() {
-  //   console.log(this.team2);
-  //   // console.log(this.team2);
-  // }
-  // }
 };
 </script>
