@@ -32,22 +32,22 @@
           sm6
           md4
           lg3
-          v-for="(product,id) in products"
-          :item="product"
+          v-for="(entry,id) in products"
+          :item="entry"
           :key="id"
           class="product"
         >
           <v-card flat class="text-xs-center ma-3 justify-center">
             <v-responsive class="pt-4">
               <v-avatar size="100" class="grey lighten-2">
-                <img :src="product.image" />
+                <img :src="entry.image" />
               </v-avatar>
             </v-responsive>
             <v-card-text>
-              <div class="subheading font-weight-bold">{{product.name}}</div>
-              <div class="subheading font-weight-bold">{{product.price}}</div>
-              <div class="subheading font-weight-light">{{product.description}}</div>
-              <div class="grey--text">{{product.category}}</div>
+              <div class="subheading font-weight-bold">{{entry.name}}</div>
+              <div class="subheading font-weight-bold">{{entry.price}}</div>
+              <div class="subheading font-weight-light">{{entry.description}}</div>
+              <div class="grey--text">{{entry.category}}</div>
             </v-card-text>
             <v-card-actions>
               <v-flex class="text-center">
@@ -78,6 +78,15 @@ export default {
     };
   },
   computed: {
+    resultsFilter(entry) {
+      if (this.filter !== "All") {
+        if (entry[this.fkey] === this.filter) {
+          return entry;
+        }
+      } else {
+        return entry;
+      }
+    }
     // productFilter() {
     //   return this[this.productFilterKey];
     // },
