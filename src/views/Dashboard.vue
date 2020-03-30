@@ -1,18 +1,8 @@
 <template>
   <div class="team">
     <v-container class="my-5">
-      <v-layout row class="mb-3">
-        <v-tooltip top>
-          <v-btn small flat color="grey" @click="sortBy('title')" slot="activator">
-            <v-icon left small>folder</v-icon>
-            <span class="caption text-lowercase">Show Cart</span>
-          </v-btn>
-          <span>Show Cart</span>
-        </v-tooltip>
+      <div>
         <v-btn
-          small
-          flat
-          color="grey"
           v-for="(entry, index) in filterList"
           :item="entry"
           :key="index"
@@ -21,11 +11,8 @@
           active = index;
         "
           :class="{ active: entry == filter }"
-        >
-          <v-icon left small>fastfood</v-icon>
-          {{ entry }}
-        </v-btn>
-      </v-layout>
+        >{{ entry }}</v-btn>
+      </div>
       <v-layout row wrap>
         <v-flex
           xs12
@@ -33,6 +20,7 @@
           md4
           lg3
           v-for="(entry,id) in products"
+          v-if="resultsFilter(entry, 'mainProduct', filter)"
           :item="entry"
           :key="id"
           class="product"
@@ -69,7 +57,7 @@ export default {
   data: function() {
     return {
       fkey: "mainProduct",
-      filterList: ["Food", "Tea", "Coffee"],
+      filterList: ["All", "Food", "Tea", "Coffee"],
       filter: "All",
       products: [],
       cart: [],
@@ -78,15 +66,15 @@ export default {
     };
   },
   computed: {
-    resultsFilter(entry) {
-      if (this.filter !== "All") {
-        if (entry[this.fkey] === this.filter) {
-          return entry;
-        }
-      } else {
-        return entry;
-      }
-    }
+    // resultsFilter(entry) {
+    //   if (this.filter !== "All") {
+    //     if (entry[this.fkey] === this.filter) {
+    //       return entry;
+    //     }
+    //   } else {
+    //     return entry;
+    //   }
+    // }
     // productFilter() {
     //   return this[this.productFilterKey];
     // },
@@ -112,6 +100,15 @@ export default {
       .then(response => (this.products = response.data));
   },
   methods: {
+    resultsFilter(entry) {
+      if (this.filter !== "All") {
+        if (entry.category === this.filter) {
+          return entry;
+        }
+      } else {
+        return entry;
+      }
+    },
     addItem(p) {
       this.cart.push(p);
       console.log(this.cart);
