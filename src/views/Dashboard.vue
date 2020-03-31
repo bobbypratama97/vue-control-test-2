@@ -2,6 +2,13 @@
   <div class="team">
     <v-container class="my-5">
       <div>
+        <v-dialog max-width="600px">
+          <v-btn flat slot="activator" class="success">Show Cart</v-btn>
+          <v-card class="text-xs-center">
+            <v-card-title>Cart List</v-card-title>
+            <v-card-text>Test</v-card-text>
+          </v-card>
+        </v-dialog>
         <v-btn
           v-for="(entry, index) in filterList"
           :item="entry"
