@@ -9,6 +9,7 @@
             <v-card-text>
               <ul id="example-1">
                 <li v-for="c in cart" :key="c">{{ c.name }} - {{c.price}}</li>
+                <span>Total : {{this.total}}</span>
               </ul>
             </v-card-text>
           </v-card>
@@ -73,6 +74,7 @@ export default {
       products: [],
       cart: [],
       user: [],
+      total: 0,
       productFilterKey: "all"
     };
   },
@@ -98,6 +100,7 @@ export default {
     },
     addItem(p) {
       this.cart.push(p);
+      this.total = this.total + p.price;
       console.log(this.cart);
     }
   }
