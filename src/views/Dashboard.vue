@@ -6,7 +6,11 @@
           <v-btn flat slot="activator" class="success">Show Cart</v-btn>
           <v-card class="text-xs-center">
             <v-card-title>Cart List</v-card-title>
-            <v-card-text>Test</v-card-text>
+            <v-card-text>
+              <ul id="example-1">
+                <li v-for="c in cart" :key="c">{{ c.name }} - {{c.price}}</li>
+              </ul>
+            </v-card-text>
           </v-card>
         </v-dialog>
         <v-btn
@@ -46,7 +50,7 @@
             </v-card-text>
             <v-card-actions>
               <v-flex class="text-center">
-                <v-btn flat color="grey" @click="addItem(p)">
+                <v-btn flat color="grey" @click="addItem(entry)">
                   <span>Add to Cart</span>
                 </v-btn>
               </v-flex>

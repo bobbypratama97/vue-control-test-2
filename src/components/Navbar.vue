@@ -24,9 +24,7 @@
           </v-avatar>
           <p class="white--text subheading mt-1">{{user[0].name}}</p>
         </v-flex>
-        <v-flex class="mt-4 mb-3">
-          <Popup />
-        </v-flex>
+        <v-flex class="mt-4 mb-3"></v-flex>
       </v-layout>
     </v-navigation-drawer>
   </nav>
