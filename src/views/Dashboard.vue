@@ -8,7 +8,13 @@
             <v-card-title>Cart List</v-card-title>
             <v-card-text>
               <ul id="example-1">
-                <li v-for="c in cart" :key="c">{{ c.name }} - {{c.price}}</li>
+                <li v-for="c in cart" :key="c">
+                  {{ c.name }} - {{c.price}}
+                  <span>
+                    <v-btn small>+</v-btn>
+                    <v-btn small>-</v-btn>
+                  </span>
+                </li>
                 <span>Total : {{this.total}}</span>
               </ul>
             </v-card-text>
