@@ -11,8 +11,8 @@
                 <li v-for="c in cart" :key="c">
                   {{ c.name }} - {{c.price}}
                   <span>
-                    <v-btn small>+</v-btn>
-                    <v-btn small>-</v-btn>
+                    <v-btn small @click="addItem()">+</v-btn>
+                    <v-btn small @click="removeItem()">-</v-btn>
                   </span>
                 </li>
                 <span>Total : {{this.total}}</span>
@@ -105,6 +105,10 @@ export default {
       }
     },
     addItem(p) {
+      var i;
+      for (i = 0; i < cars.length; i++) {
+        text += cars[i] + "<br>";
+      }
       this.cart.push(p);
       this.total = this.total + p.price;
       console.log(this.cart);
