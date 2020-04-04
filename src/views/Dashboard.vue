@@ -105,13 +105,20 @@ export default {
       }
     },
     addItem(p) {
-      var i;
-      for (i = 0; i < cars.length; i++) {
-        text += cars[i] + "<br>";
+      var i,
+        cek = 0;
+      for (i = 0; i < this.cart.length; i++) {
+        if (this.cart[i].name === p.name) {
+          this.cart[i].price = this.cart[i].price + p.price;
+          this.total = this.total + p.price;
+          cek = 1;
+        }
       }
-      this.cart.push(p);
-      this.total = this.total + p.price;
-      console.log(this.cart);
+      if (cek != 1) {
+        this.cart.push(p);
+        this.total = this.total + p.price;
+        // console.log(this.cart);
+      }
     }
   }
 };
